@@ -219,8 +219,7 @@ env_debug.json
 models/
 gfpgan/
 wandb/
-data/enhanced/
-data/processed/
+data/
 third_party/
 
 # Other
