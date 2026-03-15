@@ -1,0 +1,70 @@
+model:
+  name: efficientnet_b4
+  pretrained: true
+  num_classes: 10
+  image_size: 380
+  dropout: 0.3
+  freeze_until_percent: 0.7
+
+classes:
+  names:
+    - hall
+    - kitchen
+    - bedroom
+    - bathroom
+    - pooja_room
+    - dining_room
+    - balcony
+    - exterior
+    - study
+    - unknown
+  id_to_name:
+    0: hall
+    1: kitchen
+    2: bedroom
+    3: bathroom
+    4: pooja_room
+    5: dining_room
+    6: balcony
+    7: exterior
+    8: study
+    9: unknown
+
+training:
+  batch_size: 32
+  epochs: 30
+  lr_pretrained: 0.0001
+  lr_head: 0.001
+  weight_decay: 0.01
+  early_stopping_patience: 5
+  mixed_precision: true
+  num_workers: 4
+  pin_memory: true
+  gradient_clip: 1.0
+
+scheduler:
+  name: cosine_annealing
+  T_max: 30
+  eta_min: 0.000001
+
+augmentation:
+  train:
+    horizontal_flip: true
+    rotation_degrees: 10
+    brightness: 0.2
+    contrast: 0.2
+    random_crop: true
+  val:
+    horizontal_flip: false
+
+device:
+  use_cuda: true
+  gpu_id: 0
+
+paths:
+  train_dir: data/processed/train
+  val_dir: data/processed/val
+  test_dir: data/processed/test
+  checkpoint_dir: models/checkpoints
+  best_model_path: models/room_classifier/best_model.pth
+  class_labels_path: models/room_classifier/class_labels.json

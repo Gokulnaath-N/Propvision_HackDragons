@@ -1,0 +1,127 @@
+:root {
+  --home-bg: #050510;
+  --home-blue: #3B6FFF;
+  --home-blue-glow: rgba(59, 111, 255, 0.15);
+  --home-cyan: #00C8E0;
+  --home-cyan-glow: rgba(0, 200, 224, 0.15);
+  --home-amber: #F0A500;
+  --home-amber-glow: rgba(240, 165, 0, 0.15);
+  --home-white60: rgba(255, 255, 255, 0.6);
+  --home-white90: rgba(255, 255, 255, 0.9);
+  --home-white05: rgba(255, 255, 255, 0.05);
+  --home-white10: rgba(255, 255, 255, 0.1);
+}
+
+.home-container {
+  background-color: var(--home-bg);
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Typography styles matching Google Fonts added via JS */
+.display-font { font-family: 'Syne', sans-serif; }
+.mono-font { font-family: 'JetBrains Mono', monospace; }
+.body-font { font-family: 'DM Sans', sans-serif; }
+
+/* Gradients for text spans */
+.text-blue-grad {
+  background: linear-gradient(135deg, #fff 0%, var(--home-blue) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-cyan-grad {
+  background: linear-gradient(135deg, #fff 0%, var(--home-cyan) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-amber-grad {
+  background: linear-gradient(135deg, #fff 0%, var(--home-amber) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Scroll progress */
+.progress-bar {
+  position: fixed; top: 0; left: 0; width: 0%; height: 2px;
+  background: linear-gradient(90deg, var(--home-blue), var(--home-cyan));
+  z-index: 1000;
+}
+
+/* Ambient canvas particle background overlays */
+.noise-grain {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 100;
+  opacity: 0.1; mix-blend-mode: overlay;
+}
+
+.grid-overlay {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(var(--home-white05) 1px, transparent 1px), linear-gradient(90deg, var(--home-white05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.15;
+  pointer-events: none; z-index: 5;
+}
+
+.orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); opacity: 0.5; z-index: 0; pointer-events: none;
+}
+#orb1 { width: 40vw; height: 40vw; background: var(--home-blue); top: 10%; left: 5%; }
+#orb2 { width: 35vw; height: 35vw; background: var(--home-cyan); bottom: 10%; right: 10%; }
+#orb3 { width: 30vw; height: 30vw; background: var(--home-amber); top: 40%; left: 40%; mix-blend-mode: screen; opacity: 0; }
+
+.phase-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--home-white10); transition: all 0.3s ease;
+}
+.phase-dot.active {
+  background: var(--home-blue); box-shadow: 0 0 10px var(--home-blue); transform: scale(1.5);
+}
+
+.scan-line {
+  position: absolute; width: 100%; height: 2px;
+  background: var(--home-cyan);
+  box-shadow: 0 0 20px var(--home-cyan-glow);
+  z-index: 25; pointer-events: none;
+  opacity: 0;
+}
+
+.arch-label {
+  position: relative; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: var(--home-white60); letter-spacing: 2px;
+  display: flex; align-items: center; gap: 10px;
+}
+.arch-label .line { width: 40px; height: 1px; background: var(--home-white10); }
+
+/* Buttons */
+.btn-primary {
+  background: var(--home-blue); color: white;
+  border-radius: 999px; font-weight: 500; font-family: 'DM Sans', sans-serif;
+  transition: all 0.3s;
+}
+.btn-primary:hover {
+  background: #2a52d4; box-shadow: 0 0 20px rgba(59, 111, 255, 0.4);
+}
+.btn-ghost {
+  border: 1px solid var(--home-white10); border-radius: 999px; font-family: 'DM Sans', sans-serif; font-weight: 500;
+  color: white; transition: all 0.3s;
+}
+.btn-ghost:hover {
+  background: var(--home-white05); border-color: var(--home-white60);
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--home-white05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+.feat-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+}

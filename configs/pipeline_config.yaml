@@ -1,0 +1,45 @@
+enhancement:
+  model_name: RealESRGAN_x4plus
+  scale: 4
+  half_precision: true
+  output_format: webp
+  output_quality: 92
+  sizes:
+    hero: [1920, 1080]
+    gallery: [1280, 720]
+    thumbnail: [400, 300]
+  preprocessing:
+    min_brightness_threshold: 60
+    bilateral_d: 9
+    bilateral_sigma_color: 75
+    bilateral_sigma_space: 75
+    clahe_clip_limit: 2.0
+    tilt_correction: true
+  quality_gate:
+    min_sharpness_score: 50
+
+clip:
+  model_name: openai/clip-vit-base-patch32
+  embedding_dim: 512
+  batch_size: 64
+  normalize: true
+
+quality_scoring:
+  weights:
+    sharpness: 0.35
+    lighting: 0.30
+    resolution: 0.20
+    saturation: 0.10
+    noise: 0.05
+  grades:
+    A_plus: 90
+    A: 80
+    B_plus: 70
+    B: 60
+    C: 50
+
+pipeline:
+  max_images_per_listing: 40
+  top_images_for_api: 8
+  min_images_required: 5
+  timeout_seconds: 300

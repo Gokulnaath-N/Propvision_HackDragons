@@ -1,0 +1,31 @@
+qdrant:
+  collection_name: propvision_images
+  vector_size: 512
+  distance: Cosine
+  hnsw_config:
+    m: 16
+    ef_construct: 100
+
+search:
+  top_k_candidates: 50
+  final_results: 20
+  min_similarity: 0.25
+  reranking_weights:
+    clip_similarity: 0.40
+    quality_grade: 0.30
+    completeness: 0.20
+    user_signals: 0.10
+  grade_scores:
+    A_plus: 1.0
+    A: 0.85
+    B_plus: 0.70
+    B: 0.55
+    C: 0.35
+    D: 0.10
+
+filters:
+  price_field: price
+  city_field: city
+  bhk_field: bhk
+  grade_field: quality_grade
+  vastu_field: vastu_compliant

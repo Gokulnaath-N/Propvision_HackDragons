@@ -1,0 +1,11 @@
+train: data/processed/train
+val: data/processed/val
+test: data/processed/test
+nc: 6
+names:
+- bathroom
+- bedroom
+- dining_room
+- hall
+- kitchen
+- pooja_room
